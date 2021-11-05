@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Web midi keyboard application">
+		<meta name="author" content="Nathan Palétat">
+		<meta name="keywords" content="midi, inputs, outputs, control change, automations, messages, filters, devices, channels">
+		<title>Keyboard</title>
+		<link rel="icon"  href="favicon.svg">
+		<link rel="stylesheet" href="css/app.css" type="text/css" media="all" />
+		<script src="js/o/jquery.min.js"></script>
+		<script src="js/o/jquery-ui.min.js"></script>
+		<script src="js/o/webmidi.min.js"></script>
+		<script src="js/cc.js"></script>
+		<script src="js/app.js"></script>
+	</head>
+	<body>
+		<div id='main'>
+			<div class="row">
+  				<div class="column">
+  					<div class="panel" id='p_devmid' data-disp='true'>
+						<div class='top_right'><button id='panic' type="button" >Panic</button><button id='majdev' type="button" >Refresh</button></div>
+						<h2>Device midi</h2>
+						<div>
+							<select id='mididevice'></select>
+							<div id='devWarning'></div>
+						</div>
+					</div>
+  				</div>
+  				<div class="column">
+  					<div class="panel" id='p_channel' data-disp='true'>
+						<div class='top_right' id="mode">Mode <button data-activ='on' id='solo'>Solo</button><button id='multi'>Multi</button><button id='all'>All</button></div>
+						<h2>Channels out</h2>
+						<div id="espChan">
+							<div><button type="button" data-activ="on" data-chan="1">1</button><button type="button" data-activ="" data-chan="2">2</button><button type="button" data-activ="" data-chan="3">3</button><button type="button" data-activ="" data-chan="4">4</button><button type="button" data-activ="" data-chan="5">5</button><button type="button" data-activ="" data-chan="6">6</button><button type="button" data-activ="" data-chan="7">7</button><button type="button" data-activ="" data-chan="8">8</button></div><div><button type="button" data-activ="" data-chan="9">9</button><button type="button" data-activ="" data-chan="10">10</button><button type="button" data-activ="" data-chan="11">11</button><button type="button" data-activ="" data-chan="12">12</button><button type="button" data-activ="" data-chan="13">13</button><button type="button" data-activ="" data-chan="14">14</button><button type="button" data-activ="" data-chan="15">15</button><button type="button" data-activ="" data-chan="16">16</button></div>
+						</div>
+						<div class="clear"></div>
+					</div>
+  				</div>
+  				<div class="column">
+  					<div class="panel" id='p_velocity' data-disp='true'>
+						<div class='top_right dispVal'>100</div>
+						<h3>Velocity</h3>
+							<input id="valVel" type="range" min="0" max="127" value="100">
+					</div>
+					<div class="panel" id='p_pitch' data-disp='true'>
+						<div class='top_right' >
+							<span class='rt0'><input id='chk_pitch_rtz' type='checkbox' checked="checked" > <label for='chk_pitch_rtz'>Return to zero</label></span>
+							<span class='dispVal' >0</span>
+						</div>
+						<h3>Pitch</h3>
+						<input id="valPitch" type="range" min="-100" max="100" value="0">
+					</div>
+  				</div>
+  				<div class="column">
+  					<div class="panel" id='p_dur' data-disp='true'>
+						<div class='top_right disab' >
+							<span id='maxnum'>Max ms <input value="5000" id='maxdur' type='number' ></span>
+							<span class='dispVal' id='dispPitch'>1000</span>
+						</div>
+						<h3>Duration <input id='modplay' type='checkbox' ></h3>
+							<input id="valDur" class="disab" type="range" name="vol" min="0" max="5000" value="1000">
+					</div>
+					<div class="panel" id='p_cc' data-disp='true'>
+						<div class='top_right' >
+							<span class='dispVal'>0</span>
+						</div>
+						<h3 title='Change' id='open_modal_allcc'>1 Modulation Wheel</h3>
+						<input id="valCc" type="range" min="0" max="100" value="0">
+					</div>
+  				</div>
+  			</div>
+  			
+			<div id='keyboard'>
+				<div id='white'></div>
+				<div id='black'></div>
+				<div id='octaves'></div>
+			</div>
+			<button type='button' id="open_modal_keymap">Keyboard Mapping</button>
+		</div>
+		<div id="modal_keymap" class="modal">
+			<div class="modal_content">
+				<span class="close">&times;</span>
+				<div class="panel" id='p_keymap' data-opt='true'>
+					<div class='top_right'>
+						<span id='nOct'>Octave <span class='dispVal' id='dispKmOct'>4</span></span>
+					</div>
+					<h2>Keyboard mapping</h2>
+					<div id='shortlink'>
+						<p><span>MAJ</span> = Octave +</p>
+						<p><span>CTRL</span> = Octave -</p>
+					</div>
+					<div id='minikeyb'>
+						<div>
+							<div>&nbsp;</div>
+							<div id='C#'>C#</div>
+							<div id='D#'>D#</div>
+							<div>&nbsp;</div>
+							<div id='F#'>F#</div>
+							<div id='G#'>G#</div>
+							<div id='A#'>A#</div>
+							<div>&nbsp;</div>
+						</div>
+						<div style="margin-left: -15px">
+							<div id='maj'>MAJ</div>
+							<div id='C'>C</div>
+							<div id='D'>D</div>
+							<div id='E'>E</div>
+							<div id='F'>F</div>
+							<div id='G'>G</div>
+							<div id='A'>A</div>
+							<div id='B'>B</div>
+						</div>
+						<div style="">
+							<div id='ctrl'>CTRL</div>
+							<div id='spacebar'>&nbsp;</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		<div id="modal_choose_cc" class="modal">
+			<div class="modal_content">
+				<span class="close">&times;</span>
+				<div>
+					<h2>Choose a control change</h2>
+					<div class='cc_line'></div>
+				</div>
+			</div>
+		</div>
+		<div id="modal_help" class="modal">
+			<div class="modal_content">
+				<span class="close">&times;</span>
+				<div>
+					<h2>Help</h2>
+					<div class='help_line'>
+						<div class='help_row'>
+							<div class='panhelp'>
+								<h3>Device</h3>
+								<span>Choose your device where you want to send MIDI data.</span>
+							</div>
+							<div class='panhelp'>
+								<h3>Channels out</h3>
+								<span>Select one or many channels.</span>
+							</div>
+							<div class='panhelp'>
+								<h3>Velocity</h3>
+								<span>Define the velocity of notes.</span>
+							</div>
+							<div class='panhelp'>
+								<h3>Duration</h3>
+								<p>If the checkbox is clicked, define in millisecond the time duration of each note. Else, the note stop when you stop to click on a note.</p>
+								<p>You can define the maximum value of the range with the input 'Max ms'.</p>
+							</div>
+						</div>
+						<div class='help_row'>
+							<div class='panhelp'>
+								<h3>Pitch</h3>
+								<span>Define the pitch of notes.</span>
+							</div>
+							<div class='panhelp'>
+								<h3>Control change</h3>
+								<span>You can send control change data. Click on the name of the control change (default : 1 Modulation Wheel) to change it.</span>
+							</div>
+							<div class='panhelp'>
+								<h3>Piano</h3>
+								<p>You can play piano with the keyboard of your computer. Click on the 'Keyboard mapping' button to show the configuration.</p>
+								<p>Use your keyboard button 'MAJ' and 'CTRL' to up and down octave. You can also click on the octave number to do this.</p>
+								<p>Under the piano, use the octave number area to slide left and right.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,690 @@
+@font-face {
+    font-family: minotaur; 
+    src: url(font/minotaur.ttf);
+}
+@font-face {
+    font-family: coolveticarg; 
+    src: url(font/coolveticarg.ttf);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#main, #main *, .modal, .modal *{
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+}
+
+.clear{
+  clear:both;
+  height: 0;
+  width: 0;
+  background: none;
+  background-color: transparent;
+}
+
+.disab{
+  opacity: 0.5;
+}
+
+
+a{
+  color:hotpink;
+  text-decoration: none;
+}
+
+body{
+  background-color: #222;
+  color: #DDD;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  overflow-x: hidden; 
+}
+
+button:hover, input:hover, label:hover, select:hover{
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+select, button, input{
+  padding: 5px;
+  border-radius: 5px;
+}
+
+select{
+  background-color: #666;
+  width: 100%;
+  color: #EEE;
+}
+
+input[type='number']{
+  width: 60px;
+}
+
+
+div[data-disp='true']{
+  display: block;
+}
+div[data-disp='false']{
+  display: none;
+}
+
+@keyframes onloadapp {
+  from {}
+  to { opacity: 1}
+}
+
+.dispVal{
+  font-weight: bold;
+}
+
+/***********************************************************************************************************/
+/***********************************************************************************************************/
+/***********************************************************************************************************/
+
+#main{
+  opacity: 0;
+  animation-name: onloadapp;
+  animation-duration: 2s;  
+  animation-fill-mode: forwards;
+}
+
+div.panel{
+  position: relative;
+  padding: 10px 20px 20px 20px;
+  margin:10px;
+  background-color: #333;
+  border-radius: 5px;
+  text-align: left;
+
+  
+
+  -webkit-box-shadow: 0px 10px 13px -7px #000000; 
+  box-shadow: 0px 10px 13px -7px #000000;
+  box-sizing: border-box;
+}
+
+div.panel h2{
+  color:#a0d02de3;
+  font-family: coolveticarg, sans-serif;
+  letter-spacing: 0.1vw;
+  margin-bottom:10px;
+  text-align: left;
+}
+
+div.panel h3{
+  color:#a0d02de3;
+  font-family: coolveticarg, sans-serif;
+  letter-spacing: 0.1vw;
+  margin-bottom:7px;
+}
+
+div.panel .top_right{
+  float: right;
+}
+
+/***********************************************************************************************************/
+/***********************************************************************************************************/
+/***********************************************************************************************************/
+
+div#p_devmid button{
+  padding: 5px 15px;
+  -webkit-transition:background 300ms;
+  -moz-transition:background 300ms;
+  -o-transition:background 300ms;
+  transition:background 300ms;
+  background-color: #ccb722e0;
+  margin-left: 5px;
+}
+
+div#devWarning{
+  text-align: center;
+  padding: 5px;
+  font-weight: bold;
+  color: orange;
+}
+
+/***********************************************************************************************************/
+/***********************************************************************************************************/
+/***********************************************************************************************************/
+
+div#p_channel div#espChan{
+  margin: 10px auto 0 auto;
+  width: 100%;
+}
+div#p_channel div#espChan > div{
+  width: 100%;
+}
+
+div#p_channel div#espChan button{
+  display: inline-block;
+  width: 10%;
+  height: 30px;
+  font-size: 1em;
+  line-height: 1em;
+  text-align: center;
+  background-color: #666;
+  color: #EEE;
+  margin:0 6px 6px 0;  
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+div#p_channel div#espChan button[data-activ='on']{
+  background-color: #0075ff87;
+  color: #000;
+}
+
+div#p_channel div#mode{
+  font-size: 0.8em;
+}
+
+div#p_channel div#mode button{
+  padding: 5px 12px;
+  margin-left: 5px;
+  background-color: #666;
+    color:#EEE;
+    font-size: 1em;
+}
+
+div#p_channel div#mode button[data-activ='on']{
+  background-color: #ccb722e0;
+  color: #000;
+}
+div#p_channel div#mode button:hover{
+  cursor: pointer;
+}
+
+/***********************************************************************************************************/
+/******* INPUT *********************************************************************************************/
+/***********************************************************************************************************/
+
+
+input[type=range] {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+/***/
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #777777;
+  border-radius: 5px;
+  border: 0px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 0px solid #2497E3;
+  height: 25px;
+  width: 18px;
+  border-radius: 10px;
+  background: #0075ff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7.5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #777777;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000;
+  background: #777777;
+  border-radius: 5px;
+  border: 0px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 0px solid #2497E3;
+  height: 25px;
+  width: 18px;
+  border-radius: 10px;
+  background: #0075ff;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #777777;
+  border: 0px solid #000000;
+  border-radius: 10px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #777777;
+  border: 0px solid #000000;
+  border-radius: 10px;
+  box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 0px 0px 0px #000000;
+  border: 0px solid #2497E3;
+  height: 25px;
+  width: 18px;
+  border-radius: 10px;
+  background: #0075ff;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #777777;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #777777;
+}
+
+
+
+/***********************************************************************************************************/
+/******* MODAL *********************************************************************************************/
+/***********************************************************************************************************/
+
+/* The Modal (background) */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 100; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4); 
+}
+
+/* Modal Content/Box */
+.modal .modal_content {
+  background-color: #ddd;
+  margin: 2% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  border-radius: 10px;
+}
+
+/* The Close Button */
+.modal .close {
+  color: #0075ff;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.modal .close:hover,
+.modal .close:focus {
+  color: #900;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/******* MODAL HELP *********************************************************************************************/
+
+div#modal_help .modal_content{
+  color: #111;
+}
+
+div#modal_help .help_line{
+  display: flex;
+  flex-wrap: wrap;
+}
+div#modal_help .help_row{
+  flex: 50%;
+  max-width: 50%;
+}
+
+div#modal_help div.panhelp{
+  background-color: #CCC;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+div#modal_help h3{
+  margin-bottom:5px;
+  color:hotpink;
+}
+
+
+
+/***********************************************************************************************************/
+/***********************************************************************************************************/
+/***********************************************************************************************************/
+
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+  box-sizing: border-box;
+}
+
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media (max-width: 1550px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media (max-width: 800px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+/***********************************************************************************************************/
+/***********************************************************************************************************/
+/***********************************************************************************************************/
+
+span#maxnum{
+  position: absolute;
+  left: 200px;
+  top: 10px;
+  font-size: 12px;
+}
+span#maxnum input{
+  background-color: transparent;
+  padding: 0;
+  color: #EEE;
+}
+
+span.rt0{
+    position: absolute;
+    left:200px;
+    top:10px;
+    font-size: 10px;
+  }
+
+h3#open_modal_allcc:hover{
+  cursor: pointer;
+}
+
+/***********************************************************************************************************/
+/******* KEYBOARD ******************************************************************************************/
+/***********************************************************************************************************/
+
+div#keyboard{
+  position:relative;
+  height: 280px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+div#white, div#black{
+  position: absolute;
+  top:0;
+  left: 0;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+div#white > div {
+  position:relative;
+  display: inline-block;
+  top:0;
+  height: 200px;
+  background-color: #FFF;
+  color: #000;
+  border-right : 1px solid #222;
+  -webkit-border-bottom-right-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+div#white > div span {
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin-top:175px;
+}
+
+div#black{
+  left: 32px;
+}
+div#black > div {
+  position:absolute;
+  display: inline-block;
+  top:0;
+  height: 110px;
+  background-color: #000;
+  color: #FFF;
+  border:1px solid #000;
+  -webkit-border-bottom-right-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+div#black > div span {
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin-top:85px;
+}
+
+
+div#black > div:hover{
+  cursor: pointer;
+  color: #368496;
+}
+div#white > div:hover {
+  cursor: pointer;
+  color: #368496;
+}
+
+
+div#octaves{
+  position: absolute;
+  left: 0;
+  top:220px;
+  height: 45px;
+  width: 100%;
+}
+div#octaves > div.octiv{
+  position: absolute;
+  height: 40px;
+  width: 365px;
+  margin: 0;
+  background-color: #666;
+  text-align: center;
+  line-height: 40px;
+  font-size: 20px;
+  color: #000;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+div#octaves:hover{
+  cursor: col-resize;
+}
+
+div.octiv span{
+  padding: 15px 10px;
+  height: 100%;
+  color: #18559e;
+  background-color: #CCC;
+  border-radius: 7px;
+}
+div.octiv span:hover{
+  cursor: pointer;
+}
+
+
+
+/***********************************************************************************************************/
+/******* KEYMAP ********************************************************************************************/
+/***********************************************************************************************************/
+
+button#open_modal_keymap{
+  display: block;
+  width: 20%;
+  margin: 10px auto;
+  line-height: 2em;
+  padding: 5px 15px;
+  background-color: #ccb722e0;
+  min-width: 200px;
+}
+
+div#bulle{
+  width: 14px;
+  height: 14px;
+  background-color: #18559e;
+  opacity: 0.8;
+  position: absolute;
+  bottom: 40px;
+  left:22px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+}
+
+div#p_keymap{
+  margin:40px auto;
+  width: 550px;
+}
+
+div#p_keymap span#nOct{
+  position: absolute;
+  right:44px;
+  top:16px;
+}
+
+div#p_keymap div#shortlink{
+  float: left;
+  margin-top: 5px;
+}
+div#p_keymap div#minikeyb{
+  float: right;
+}
+
+div#p_keymap div#minikeyb > div >div{
+  width: 20px;
+  height: 15px;
+  font-size: 12px;
+  border:1px solid #000;
+  display: inline-block;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  padding: 3px;
+  line-height: 15px;
+  text-align: center;
+  font-weight: bold;
+  -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+div#p_keymap > div > div > div#spacebar{
+  width: 140px;
+  border:1px solid #000;
+  height: 15px;
+  padding: 3px;
+  margin-left: 40px;
+  -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+div#p_keymap #shortlink p{
+  margin-bottom: 25px;
+}
+div#p_keymap #shortlink span{
+  width: 40px;
+  border:1px solid #000;
+  height: 15px;
+  padding: 5px;
+  -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+  background-color: #CCC;
+  color:#000;
+}
+
+div#p_keymap > div > div > div#maj, div#p_keymap > div > div > div#ctrl{
+ font-size: 10px; 
+ width:33px;
+}
+
+div#p_keymap #dispKmOct{
+  color:hotpink;
+}
+
+/***********************************************************************************************************/
+/******* MODAL ********************************************************************************************/
+/***********************************************************************************************************/
+
+div#modal_choose_cc .modal_content{
+  color: #111;
+}
+
+div#modal_choose_cc .cc_line{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+div#modal_choose_cc .cc_col{
+  flex: 22%;
+  max-width: 22%;
+  box-sizing: border-box;
+  padding: 2px;
+}
+
+div#modal_choose_cc .cc_col button{
+  width: 100%;
+  text-align: left;
+}
+
+div#modal_choose_cc .cc_col button:hover{
+  background-color: #0075ff87;
+}
