@@ -53,13 +53,7 @@ function thenErrorMidi(){
 /** INIT APP
 /***/
 function initApp(){
-	APP = new app('in');
-
-	APP.hook.checkit = function(p,f){
-		if( typeof APP.hook[p] === 'object' ){
-			if (typeof APP.hook[p][f] === "function") { APP.hook[p][f](); }
-		}
-	}
+	APP = new app();
 
 	APP.init();
 }
@@ -73,7 +67,6 @@ function app(){
 	this.dir = 'out',
 	this.MidiOutput = '',  
 	this.d = {},
-	this.hook = {},
 
 	this.init = function(){
 		init_device();
@@ -141,7 +134,6 @@ function init_device(){
 			APP.d.devSelect.html(opt);
 		},
 		update : function(){
-			APP.hook.checkit('device', 'bef_update');
 			this.id = APP.d.devSelect.val();
 			this.name = APP.d.devSelect.find("option:selected").attr('name');
 			this.manu = APP.d.devSelect.find("option:selected").attr('data-manu');
@@ -154,7 +146,6 @@ function init_device(){
 			if(ghost===false){
 				APP.device.dispWarning("Error ! Please click 'Refresh' !");
 			}
-			APP.hook.checkit('device', 'aft_update');
 		},
 		panic : function(){
 			APP.MidiOutput.sendChannelMode('allnotesoff');
